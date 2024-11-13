@@ -4,12 +4,12 @@
         "slug": "mobile",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/images/icon.png",
+        "icon": "./assets/images/no-text-logo.png",
         "scheme": "myapp",
         "userInterfaceStyle": "automatic",
         "splash": {
-            "image": "./assets/images/splash.png",
-            "resizeMode": "contain",
+            "image": "./assets/images/splash-background.png",
+            "resizeMode": "cover",
             "backgroundColor": "#ffffff"
         },
         "ios": {
@@ -24,7 +24,7 @@
         "web": {
             "bundler": "metro",
             "output": "static",
-            "favicon": "./assets/images/favicon.png"
+            "favicon": "./assets/images/no-text-logo.png"
         },
         "plugins": ["expo-router"],
         "experiments": {
