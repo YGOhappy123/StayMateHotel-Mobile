@@ -1,11 +1,11 @@
 {
     "expo": {
-        "name": "mobile",
+        "name": "Stay Mate Hotel",
         "slug": "mobile",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./src/assets/images/no-text-logo.png",
-        "scheme": "myapp",
+        "scheme": "mobile",
         "userInterfaceStyle": "automatic",
         "splash": {
             "image": "./src/assets/images/splash-background.png",
