@@ -18,6 +18,9 @@ This is the Mobile portion of our final project of the Service Oriented Software
 -   [React Native](https://reactnative.dev/)
 -   [Expo](https://expo.dev/)
 -   [TypeScript](https://www.typescriptlang.org/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [Redux Toolkit](https://redux-toolkit.js.org/)
+-   [TanStack React Query](https://tanstack.com/query/latest)
 -   [Axios](https://axios-http.com/)
 
 ## Required Dependencies
@@ -76,7 +79,7 @@ npm run dev
 
 This will start the Expo development server.
 
-You can view the app by visiting `http://localhost:3001` in your browser or scanning the QR code in the `Terminal` using your `Expo Go` mobile app.
+You can view the app by visiting `http://localhost:3000` in your browser or scanning the QR code in the `Terminal` using your `Expo Go` mobile app.
 
 **Note:** The color theme of the app will depend on your device's system settings.
 
@@ -92,6 +95,9 @@ You can view the app by visiting `http://localhost:3001` in your browser or scan
 -   **Device-Specific Features** 📱 Access to native device features like camera, GPS, and accelerometer using Expo SDK.
 -   **Over-the-Air (OTA) Updates** 🔄 Push updates to your app without requiring users to download a new version from the app store.
 -   **Internationalization Ready** 🌍 Easily support multiple languages and locales with libraries like `react-native-localize`.
+-   **Styled with Tailwind CSS** 🎨 for a modern, responsive design.
+-   **State management with Redux Toolkit** 🛠 for efficient state management.
+-   **Data fetching with TanStack React Query** 🔄 for powerful server state management.
 -   **HTTP Requests with Axios** 🌐 Simplified API integration for making HTTP requests to fetch and send data.
 
 ## Suggested VS Code Extensions
@@ -103,6 +109,7 @@ You can view the app by visiting `http://localhost:3001` in your browser or scan
 | Code Spell Checker                     | Street Side Software |    No     | Spelling checker for source code                                  |
 | ES7+ React/Redux/React-Native snippets | dsznajder            |    No     | Code suggestions and snippets for React JS/TS                     |
 | Multiple cursor case preserve          | Cardinal90           |    No     | Preserves case when editing with multiple cursors                 |
+| Tailwind CSS IntelliSense              | Tailwind Labs        |    No     | Code suggestions for Tailwind CSS                                 |
 | TPretty TypeScript Errors              | yoavbls              |    No     | Make TypeScript errors prettier and more human-readable in VSCode |
 
 ## Contributors

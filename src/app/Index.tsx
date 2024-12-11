@@ -1,17 +1,28 @@
-import { View, Text } from 'react-native'
+import { useRouter } from 'expo-router'
+import { useEffect, useState } from 'react'
+import { StatusBar, Button } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import axios from 'axios'
 
-const Index = () => {
+const WelcomeScreen = () => {
+    const [text, setText] = useState('')
+    const router = useRouter()
+
+    useEffect(() => {
+        const demoGetApi = async () => {
+            const { data } = await axios.get(`${process.env.EXPO_PUBLIC_SERVER_URL}/rooms`)
+            console.log(data)
+        }
+
+        // demoGetApi()
+    }, [])
+
     return (
-        <View className="bg-yellow-500">
-            <Text className="font-pp-light text-4xl">Hello World</Text>
-            <Text className="font-poppins text-4xl">Hello World</Text>
-            <Text className="font-pp-medium text-4xl">Hello World</Text>
-            <Text className="font-pp-semibold text-4xl">Hello World</Text>
-            <Text className="font-pp-bold text-4xl">Hello World</Text>
-            <Text className="font-pp-extrabold text-4xl">Hello World</Text>
-            <Text className="font-pp-black text-4xl">Hello World</Text>
-        </View>
+        <SafeAreaView className="h-full items-center justify-center bg-primary">
+            <Button title="Sign In" onPress={() => router.push('/auth/sign-in')} />
+            <StatusBar barStyle="light-content" />
+        </SafeAreaView>
     )
 }
 
-export default Index
+export default WelcomeScreen
