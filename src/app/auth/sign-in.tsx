@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { View, Text } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import PrimaryButton from '@/src/components/common/PrimaryButton'
-import TextInput from '@/src/components/common/TextInput'
-import PasswordInput from '@/src/components/common/PasswordInput'
+import PrimaryButton from '@/components/common/PrimaryButton'
+import TextInput from '@/components/common/TextInput'
+import PasswordInput from '@/components/common/PasswordInput'
+import authService from '@/services/authService'
 
 const SignInScreen = () => {
     const router = useRouter()
+    const { signInMutation } = authService()
 
     const [formValues, setFormValues] = useState({
         username: '',
@@ -23,10 +25,10 @@ const SignInScreen = () => {
         const formErrors = validateFormValues()
 
         if (!formErrors.username && !formErrors.password) {
-            // await signInMutation.mutateAsync({
-            //     username: formValues.username,
-            //     password: formValues.password
-            // })
+            await signInMutation.mutateAsync({
+                username: formValues.username,
+                password: formValues.password
+            })
         } else {
             setErrors(formErrors)
         }

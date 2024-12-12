@@ -26,6 +26,7 @@ const PasswordInput = ({ label, placeholder, value, error, onChange, onFocus, wr
                 value={value}
                 onChangeText={onChange}
                 onFocus={onFocus}
+                secureTextEntry={!showPassword}
                 className={twMerge(
                     `rounded border-2 border-solid border-neutral-500 px-3 py-3 text-lg font-semibold text-primary caret-primary focus:border-primary ${inputClassName}`
                 )}
