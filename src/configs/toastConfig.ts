@@ -1,12 +1,12 @@
 import { ToastShowParams } from 'react-native-toast-message'
 
 type ToastParams = {
+    type?: 'error' | 'info' | 'success'
     title?: string
     body?: string
-    type?: 'error' | 'info' | 'success'
 }
 
-const toastConfig = ({ title, body, type }: ToastParams): ToastShowParams => ({
+const toastConfig = ({ type, title, body }: ToastParams): ToastShowParams => ({
     type: type,
     text1: title,
     text2: body,

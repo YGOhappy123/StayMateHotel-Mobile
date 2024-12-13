@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { View, Text } from 'react-native'
 import { useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import PrimaryButton from '@/components/common/PrimaryButton'
+import GradientButton from '@/components/common/GradientButton'
 import TextInput from '@/components/common/TextInput'
 import PasswordInput from '@/components/common/PasswordInput'
 import authService from '@/services/authService'
@@ -69,7 +69,7 @@ const SignInScreen = () => {
                     wrapperClassName="mb-10"
                 />
                 <View className="mt-4 items-center">
-                    <PrimaryButton title="Đăng Nhập" handlePress={handleSubmit} containerStyles="w-full" />
+                    <GradientButton title="Đăng Nhập" handlePress={handleSubmit} containerStyles="w-full" />
                     <View className="mt-6 flex-row">
                         <Text className="font-medium">Chưa có tài khoản? </Text>
                         <Text className="cursor-pointer font-bold text-primary hover:underline" onPress={() => router.push('/auth/sign-up')}>

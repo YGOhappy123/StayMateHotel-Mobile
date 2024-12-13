@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import { Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
-type PrimaryButtonProps = {
+type GradientButtonProps = {
     title: string
     handlePress: () => void
     containerStyles?: string
@@ -10,7 +10,7 @@ type PrimaryButtonProps = {
     isLoading?: boolean
 }
 
-const PrimaryButton = ({ title, handlePress, containerStyles, textStyles, isLoading }: PrimaryButtonProps) => {
+const GradientButton = ({ title, handlePress, containerStyles, textStyles, isLoading }: GradientButtonProps) => {
     return (
         <TouchableOpacity
             onPress={handlePress}
@@ -24,7 +24,7 @@ const PrimaryButton = ({ title, handlePress, containerStyles, textStyles, isLoad
                 end={{ x: 1, y: 0 }}
                 className={`h-full w-full flex-row items-center justify-center px-6 py-3 font-medium ${isLoading ? 'opacity-50' : ''}`}
             >
-                <Text className={`text-lg font-medium text-white ${textStyles}`}>{title}</Text>
+                <Text className={twMerge(`text-lg font-medium text-white ${textStyles}`)}>{title}</Text>
 
                 {isLoading && <ActivityIndicator animating={isLoading} color="#fff" size="small" className="ml-2" />}
             </LinearGradient>
@@ -32,4 +32,4 @@ const PrimaryButton = ({ title, handlePress, containerStyles, textStyles, isLoad
     )
 }
 
-export default PrimaryButton
+export default GradientButton

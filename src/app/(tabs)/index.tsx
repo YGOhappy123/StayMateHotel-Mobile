@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { signOut } from '@/slices/authSlice'
 
-const WelcomeScreen = () => {
+const HomeScreen = () => {
     const router = useRouter()
     const dispatch = useDispatch()
     const isLogged = useSelector((state: RootState) => state.auth.isLogged)
 
     return (
-        <SafeAreaView className="h-full items-center justify-center bg-primary">
+        <SafeAreaView className="h-full items-center justify-center bg-ivory">
             {isLogged ? (
                 <View className="gap-4">
                     <TouchableOpacity
@@ -48,4 +48,4 @@ const WelcomeScreen = () => {
     )
 }
 
-export default WelcomeScreen
+export default HomeScreen
