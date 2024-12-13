@@ -6,6 +6,7 @@ import Toast from 'react-native-toast-message'
 
 import { onError } from '@/utils/errorsHandler'
 import { setLogged, setUser } from '@/slices/authSlice'
+import { getMappedMessage } from '@/utils/resMessageMapping'
 import useAxiosIns from '@/hooks/useAxiosIns'
 import toastConfig from '@/configs/toastConfig'
 
@@ -35,7 +36,7 @@ const authService = () => {
                 toastConfig({
                     type: 'success',
                     title: 'Thành công.',
-                    body: res.data.message
+                    body: getMappedMessage(res.data.message)
                 })
             )
         }
