@@ -41,7 +41,7 @@ const PasswordInput = ({ label, placeholder, value, error, onChange, onFocus, wr
             >
                 <Icon name={showPassword ? 'visibility-off' : 'visibility'} size={24} color="#588157" />
             </TouchableOpacity>
-            <Text className="absolute bottom-[-20px] px-3 text-sm font-medium text-red-600">{error}</Text>
+            <Text className="absolute bottom-[-20px] text-sm font-medium text-red-600">{error}</Text>
         </View>
     )
 }

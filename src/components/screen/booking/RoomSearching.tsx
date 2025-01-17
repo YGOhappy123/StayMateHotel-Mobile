@@ -21,7 +21,7 @@ type DataRange = {
 }
 
 const RoomSearching = ({ setAvailableRooms, setBookingRequirements }: RoomSearchingProps) => {
-    const { buildRoomsQuery, getAvailableRoomsQuery } = bookingService({ enableFetching: false })
+    const { buildRoomsQuery, getAvailableRoomsQuery } = bookingService()
 
     const [wishedRooms, setWishedRooms] = useState<WishedRoom[]>([{ numberOfGuests: 1 }])
     const [range, setRange] = useState<DataRange>({ startDate: undefined, endDate: undefined })

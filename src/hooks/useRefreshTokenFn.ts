@@ -19,7 +19,7 @@ const useRefreshTokenFn = (axiosIns: AxiosInstance) => {
             })
         )
         dispatch(signOut() as any)
-        router.push('/sign-in')
+        router.push('/auth/sign-in')
     }
 
     const refreshTokenFn = async (refreshToken: string) =>

@@ -31,7 +31,7 @@ const ChosenRoomsForm = ({ availableRooms, chosenRooms, bookingRequirements }: C
         }, 0)
     }, [chosenRooms])
 
-    const { placeBookingMutation } = bookingService({ enableFetching: false })
+    const { placeBookingMutation } = bookingService()
     const handleBooking = async () => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/

@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 type SelectInputProps = {
     label: string
-    value: string
+    value: string | number
     error: string
     options: { value: string | number; label: string }[]
-    onChange: (value: string) => void
+    onChange: (value: string | number) => void
     onFocus: () => void
     havingDefaultOptions?: boolean
     wrapperClassName?: string
@@ -43,10 +43,10 @@ const SelectInput = ({
                     return (
                         <View
                             className={twMerge(
-                                `flex-row items-center justify-between rounded border-2 border-solid border-neutral-500 px-3 py-3 text-lg font-semibold text-primary caret-primary focus:border-primary ${selectClassName}`
+                                `flex-row items-center justify-between rounded border-2 border-solid border-primary px-3 py-3 text-lg font-semibold caret-primary ${selectClassName}`
                             )}
                         >
-                            <Text className="text-xl font-medium">{(selectedItem && selectedItem.label) || ''}</Text>
+                            <Text className="text-lg font-medium text-primary">{(selectedItem && selectedItem.label) || ''}</Text>
                             <Icon name={isOpened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={20} />
                         </View>
                     )
@@ -54,7 +54,7 @@ const SelectInput = ({
                 renderItem={(item, _, isSelected) => {
                     return (
                         <View className={twMerge(`w-full px-3 py-2 ${isSelected ? 'bg-secondary' : ''}`)}>
-                            <Text className="text-xl font-medium">{item.label}</Text>
+                            <Text className="text-lg font-medium">{item.label}</Text>
                         </View>
                     )
                 }}
@@ -64,7 +64,7 @@ const SelectInput = ({
                     borderRadius: 4
                 }}
             />
-            <Text className="absolute bottom-[-20px] px-3 text-sm font-medium text-red-600">{error}</Text>
+            <Text className="absolute bottom-[-20px] text-sm font-medium text-red-600">{error}</Text>
         </View>
     )
 }

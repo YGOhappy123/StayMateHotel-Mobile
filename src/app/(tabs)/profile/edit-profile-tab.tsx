@@ -39,7 +39,7 @@ const EditProfileTab = () => {
         const formErrors = validateFormValues()
 
         if (!formErrors.firstName && !formErrors.lastName && !formErrors.email && !formErrors.phoneNumber && !formErrors.address) {
-            if (user!.role === 'Guest') {
+            if (user?.role === 'Guest') {
                 updateProfileMutation
                     .mutateAsync({
                         data: {
@@ -139,7 +139,7 @@ const EditProfileTab = () => {
                         error={errors.phoneNumber}
                         onChange={value => setFormValues(prev => ({ ...prev, phoneNumber: value }))}
                         onFocus={() => setErrors(prev => ({ ...prev, phoneNumber: '' }))}
-                        wrapperClassName="mb-10 w-full"
+                        wrapperClassName={`w-full ${user?.role === 'Guest' ? 'mb-10' : 'mb-12'}`}
                     />
                     {user?.role === 'Guest' && (
                         <TextInput

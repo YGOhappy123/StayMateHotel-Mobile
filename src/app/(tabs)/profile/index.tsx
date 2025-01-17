@@ -1,15 +1,20 @@
 import { useState } from 'react'
-import { useWindowDimensions, Text } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import { TabView, SceneMap } from 'react-native-tab-view'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 import { renderTabBar } from '@/app/(tabs)/(home)'
 import AppBar from '@/components/layout/AppBar'
 import EditProfileTab from '@/app/(tabs)/profile/edit-profile-tab'
 import ChangeAvatarTab from '@/app/(tabs)/profile/change-avatar-tab'
 import ChangePasswordTab from '@/app/(tabs)/profile/change-password-tab'
+import ManageBookingTab from '@/app/(tabs)/profile/manage-bookings-tab'
+import NoPermissionTab from '@/app/(tabs)/profile/no-permission-tab'
 
 const ProfileTabScreen = () => {
     const layout = useWindowDimensions()
+    const user = useSelector((state: RootState) => state.auth.user)
     const [index, setIndex] = useState(0)
     const [routes] = useState([
         { key: 'first', title: 'Thông Tin' },
@@ -22,7 +27,7 @@ const ProfileTabScreen = () => {
         first: () => <EditProfileTab />,
         second: () => <ChangeAvatarTab />,
         third: () => <ChangePasswordTab />,
-        fourth: () => <Text>4</Text>
+        fourth: () => (user?.role === 'Guest' ? <ManageBookingTab /> : <NoPermissionTab />)
     })
 
     return (

@@ -42,6 +42,28 @@ const authService = () => {
         }
     })
 
+    const signUpMutation = useMutation({
+        mutationFn: (data: { firstName: string; lastName: string; username: string; password: string; confirmPassword: string }) =>
+            axios.post<IResponseData<SignInResponse>>('/auth/sign-up', data),
+        onError: onError,
+        onSuccess: async res => {
+            const { user, accessToken, refreshToken } = res.data.data
+            await AsyncStorage.setItem('access_token', accessToken)
+            await AsyncStorage.setItem('refresh_token', refreshToken)
+
+            router.push('/')
+            dispatch(setLogged(true))
+            dispatch(setUser(user))
+            Toast.show(
+                toastConfig({
+                    title: 'Đăng ký thành công.',
+                    body: getMappedMessage(res.data.message),
+                    type: 'success'
+                })
+            )
+        }
+    })
+
     const updatePasswordMutation = useMutation({
         mutationFn: ({ oldPassword, newPassword, confirmPassword }: { oldPassword: string; newPassword: string; confirmPassword: string }) =>
             axios.post<IResponseData<any>>(`/auth/change-password`, { oldPassword, newPassword, confirmPassword }),
@@ -59,6 +81,7 @@ const authService = () => {
 
     return {
         signInMutation,
+        signUpMutation,
         updatePasswordMutation
     }
 }

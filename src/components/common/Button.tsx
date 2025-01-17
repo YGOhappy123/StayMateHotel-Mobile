@@ -60,10 +60,10 @@ const Button = ({ text, variant, buttonClassName, textClassName, disabled = fals
             onPress={handleClick}
             disabled={disabled}
             className={twMerge(
-                `min-w-[120px] justify-center rounded-md border-2 border-solid px-3 py-2 disabled:border-gray-600 disabled:bg-gray-100 disabled:text-gray-600 disabled:opacity-50 ${variantStyles.button} ${buttonClassName}`
+                `min-w-[120px] justify-center rounded-md border-2 border-solid px-3 py-2 disabled:border-gray-600 disabled:bg-gray-100 disabled:opacity-50 ${variantStyles.button} ${buttonClassName}`
             )}
         >
-            <Text className={twMerge(`text-center font-medium ${variantStyles.text} ${textClassName}`)}>{text}</Text>
+            <Text className={twMerge(`text-center font-medium ${variantStyles.text} ${disabled && 'text-gray-600'} ${textClassName}`)}>{text}</Text>
         </TouchableOpacity>
     )
 }

@@ -58,7 +58,7 @@ const RoomListSection = () => {
                     {roomClasses.map(rc => (
                         <TouchableOpacity
                             key={rc.id}
-                            className={`flex h-[50px] min-w-[160px] items-center justify-center rounded-full border-2 border-primary font-semibold uppercase tracking-widest ${roomClassQuery.toLowerCase() === rc.className.toLowerCase() ? 'bg-primary text-ivory hover:bg-primary/90' : 'bg-ivory text-primary hover:bg-[#DBD6CA]'}`}
+                            className={`h-[50px] min-w-[160px] items-center justify-center rounded-full border-2 border-primary font-semibold uppercase tracking-widest ${roomClassQuery.toLowerCase() === rc.className.toLowerCase() ? 'bg-primary text-ivory hover:bg-primary/90' : 'bg-ivory text-primary hover:bg-[#DBD6CA]'}`}
                             onPress={() => setRoomClassQuery(rc.className)}
                         >
                             <Text
@@ -87,9 +87,11 @@ const RoomListSection = () => {
                             ))}
                         </View>
                     ) : (
-                        <View className="text-center font-semibold text-[#6E6E6E]">
-                            <Text className="text-lg">Xin lỗi!</Text>
-                            <Text>Hiện tại chúng tôi không có phòng khả dụng thuộc hạng phòng {roomClassQuery}</Text>
+                        <View>
+                            <Text className="text-center text-lg font-semibold text-[#6E6E6E]">Xin lỗi!</Text>
+                            <Text className="text-center font-semibold text-[#6E6E6E]">
+                                Hiện tại chúng tôi không có phòng khả dụng thuộc hạng phòng {roomClassQuery}
+                            </Text>
                         </View>
                     )}
                 </View>

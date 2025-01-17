@@ -9,6 +9,7 @@ import toastConfig from '@/configs/toastConfig'
 const AppBar = () => {
     const router = useRouter()
     const dispatch = useDispatch()
+    const isLogged = useSelector((state: RootState) => state.auth.isLogged)
     const user = useSelector((state: RootState) => state.auth.user)
 
     return (
@@ -19,7 +20,7 @@ const AppBar = () => {
                     SMH
                 </Text>
             </View>
-            {user == null ? (
+            {!isLogged ? (
                 <TouchableOpacity
                     onPress={() => router.push('/auth/sign-in')}
                     className="min-w-[140px] items-center justify-center rounded-full bg-primary px-5 py-2.5"
@@ -30,6 +31,7 @@ const AppBar = () => {
                 <View className="flex-row items-center gap-2.5">
                     <TouchableOpacity
                         onPress={() => {
+                            router.push('/')
                             dispatch(signOut() as any)
                             Toast.show(
                                 toastConfig({
@@ -44,7 +46,7 @@ const AppBar = () => {
                         <Text className="text-xl font-medium capitalize text-ivory">Đăng xuất</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => router.push('/profile')}>
-                        <Image source={{ uri: user.avatar }} className="h-[45px] w-[45px] rounded-full border-2 border-primary" />
+                        <Image source={{ uri: user?.avatar }} className="h-[45px] w-[45px] rounded-full border-2 border-primary" />
                     </TouchableOpacity>
                 </View>
             )}

@@ -31,7 +31,6 @@ const DashboardLayout = () => {
         <SafeAreaProvider>
             <Stack>
                 <Stack.Screen name="index" options={{ headerShown: false }} />
-                <Stack.Screen name="floors" options={{ headerShown: false }} />
             </Stack>
         </SafeAreaProvider>
     )

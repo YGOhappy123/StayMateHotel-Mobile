@@ -4,6 +4,8 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setUser } from '@/slices/authSlice'
+import Toast from 'react-native-toast-message'
+import toastConfig from '@/configs/toastConfig'
 import adminService from '@/services/adminService'
 import customerService from '@/services/customerService'
 import fileService from '@/services/fileService'
@@ -27,7 +29,13 @@ const ChangeAvatarTab = () => {
         try {
             const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
             if (!permissionResult.granted) {
-                console.log('no permission')
+                Toast.show(
+                    toastConfig({
+                        title: 'Cần cấp quyền truy cập',
+                        body: 'Ứng dụng chưa có quyền truy cập vào thư viện của bạn',
+                        type: 'info'
+                    })
+                )
                 return
             }
 
@@ -51,9 +59,7 @@ const ChangeAvatarTab = () => {
     }
 
     const updateAvatar = () => {
-        console.log({ ...user, avatar })
-
-        if (user!.role === 'Guest') {
+        if (user?.role === 'Guest') {
             updateProfileMutation.mutateAsync({ data: { ...user, avatar } }).then(() => dispatch(setUser({ ...user, avatar } as IUser)))
         } else {
             updateAdminMutation.mutateAsync({ data: { ...user, avatar } }).then(() => dispatch(setUser({ ...user, avatar } as IUser)))
