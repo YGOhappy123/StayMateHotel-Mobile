@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import { useRouter } from 'expo-router'
 import { useQuery } from 'react-query'
@@ -16,8 +16,17 @@ const ManageBookingTab = () => {
     const limit = 4
     const [page, setPage] = useState(1)
     const [activeStatus, setActiveStatus] = useState<BookingStatus>()
+    const scrollViewRef = useRef<ScrollView>(null)
 
     useEffect(() => setPage(1), [activeStatus])
+    useEffect(
+        () =>
+            scrollViewRef.current?.scrollTo({
+                y: 0,
+                animated: true
+            }),
+        [page]
+    )
 
     const fetchMyBookingsQuery = useQuery(['my-bookings'], {
         queryFn: () => {
@@ -44,7 +53,7 @@ const ManageBookingTab = () => {
     const lastPage = Math.ceil([...myBookings.filter(bk => !activeStatus || bk.status === activeStatus)].length / limit)
 
     return (
-        <ScrollView>
+        <ScrollView ref={scrollViewRef}>
             <View className="flex-1">
                 <View className="items-start px-5 py-20">
                     <Text className="mb-6 text-4xl font-bold uppercase leading-[50px] text-primary">Xem đơn đặt phòng</Text>
@@ -76,14 +85,16 @@ const ManageBookingTab = () => {
                     <View className="w-full items-center gap-[30px]">
                         {myBookings.length > 0 ? (
                             <Fragment>
-                                {myBookings.map(booking => (
-                                    <BookingCard
-                                        key={booking.id}
-                                        booking={booking}
-                                        services={availableServices}
-                                        fetchMyBookingsQuery={fetchMyBookingsQuery}
-                                    />
-                                ))}
+                                {[...myBookings.filter(bk => !activeStatus || bk.status === activeStatus)]
+                                    .slice((page - 1) * limit, page * limit)
+                                    .map(booking => (
+                                        <BookingCard
+                                            key={booking.id}
+                                            booking={booking}
+                                            services={availableServices}
+                                            fetchMyBookingsQuery={fetchMyBookingsQuery}
+                                        />
+                                    ))}
                             </Fragment>
                         ) : (
                             <Fragment>
